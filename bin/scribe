@@ -1,0 +1,42 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]; then
+  echo "Uso: $0 <biblioteca.h> [<arquivos de origem>...]"
+  exit 1
+fi
+
+LIBRARY_NAME=$(basename "$1")
+LIBRARY_NAME="${LIBRARY_NAME%.*}"
+HEADER_FILE="$1"
+
+for src_file in "${@:2}"; do
+  if [[ ! "$src_file" =~ \.(c|cpp)$ ]]; then
+    echo "Formato de arquivo de origem inválido: $src_file"
+    exit 1
+  fi
+done
+
+if [[ "${@: -1}" == *".cpp" ]]; then
+  COMPILER="g++"
+else
+  COMPILER="gcc"
+fi
+
+LIB_DIR="/usr/local/lib"
+INCLUDE_DIR="/usr/local/include"
+
+"$COMPILER" -c "${@:2}" -o "$LIBRARY_NAME.o"
+
+"$COMPILER" -shared -o "lib$LIBRARY_NAME.so" "$LIBRARY_NAME.o"
+
+sudo mv "lib$LIBRARY_NAME.so" "$LIB_DIR/"
+
+sudo cp "$HEADER_FILE" "$INCLUDE_DIR/"
+
+sudo ldconfig
+
+echo "export CPATH=$INCLUDE_DIR" >> ~/.bashrc
+
+echo "A biblioteca $HEADER_FILE foi instalada com sucesso!"
+
+rm "$LIBRARY_NAME.o"
