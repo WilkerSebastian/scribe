@@ -2,7 +2,7 @@
 
 O Scribe é o meu script bash que desenvolvi para facilitar o processo de criação de bibliotecas em C/C++ no LINUX. Ele automatiza o processo de compilação dos arquivos de origem da biblioteca, cria um arquivo .so, adiciona o .so à biblioteca do sistema e o cabeçalho ao sistema de inclusão.
 
-### Instalção
+### Instalação
 
 1. Clone o repositório
 ```bash
