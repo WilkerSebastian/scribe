@@ -1,31 +1,30 @@
 # SCRIBE SCRIPT
 
-scribe é meu script bash que desenvolvi para facililar o processo de criação de bibliotecas em C/C++ no LINUX.
-Ele faz o processo de compilação dos arquivos de origem da biblioteca e então os compila num .so, depois adiciona o .so na lib do sistema e o cabeçalho no include do sistema.
+O Scribe é o meu script bash que desenvolvi para facilitar o processo de criação de bibliotecas em C/C++ no LINUX. Ele automatiza o processo de compilação dos arquivos de origem da biblioteca, cria um arquivo .so, adiciona o .so à biblioteca do sistema e o cabeçalho ao sistema de inclusão.
 
 ### Instalção
 
-1. clone o repositorio
+1. Clone o repositório
 ```bash
     git clone https://github.com/WilkerSebastian/scribe.git
 ```
 
-2. entre no diretorio scribe
+2. Acesse o diretório scribe
 ```bash
     cd scribe
 ```
 
-3. modifique a permissão do script par apoder executar
+3. Modifique as permissões do script para permitir a execução:
 ```bash
     sudo chmod +x ./install.sh
 ```
 
-4. execute o script de instalção
+4. Execute o script de instalação:
 ```bash
     sudo ./install.sh
 ```
 
-5. reinicie o terminal
+5. Reinicie o terminal
 ```bash
     source ~/.bashrc
 ```
